@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{ECCEB91C-06AC-454D-BD29-BD044515834D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Console101.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Visual01.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Console101">
+        <MSBuild Projects="Console101.dproj"/>
+    </Target>
+    <Target Name="Console101:Clean">
+        <MSBuild Projects="Console101.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Console101:Make">
+        <MSBuild Projects="Console101.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Visual01">
+        <MSBuild Projects="Visual01.dproj"/>
+    </Target>
+    <Target Name="Visual01:Clean">
+        <MSBuild Projects="Visual01.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Visual01:Make">
+        <MSBuild Projects="Visual01.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Console101;Visual01"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Console101:Clean;Visual01:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Console101:Make;Visual01:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
